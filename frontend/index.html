@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Potify</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <div id="mobileOverlay" class="mobile-overlay"></div>
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fab fa-spotify" style="color: #1db954;"></i> Potify</h2>
+                <button id="closeMenuBtn" class="mobile-only close-menu"><i class="fas fa-times"></i></button>
+            </div>
+            <ul>
+                <li onclick="clearSearch()"><i class="fas fa-home"></i> Home</li>
+                <li class="active" onclick="clearSearch()"><i class="fas fa-search"></i> Search</li>
+            </ul>
+            
+            <hr style="border-color: #282828; margin: 20px 0;">
+            
+            <div class="create-album-section">
+                <input type="text" id="newAlbumInput" placeholder="New album name...">
+                <button id="createAlbumBtn"><i class="fas fa-plus"></i></button>
+            </div>
+            
+            <ul id="userAlbumsList" class="album-list">
+                </ul>
+        </div>
+
+        <div class="main-content">
+            <div class="topbar">
+                <button id="menuToggle" class="mobile-only menu-toggle"><i class="fas fa-bars"></i></button>
+                
+                <div class="search-container">
+                    <i class="fas fa-search search-icon hidden-mobile"></i>
+                    <input type="text" id="searchInput" placeholder="Search songs...">
+                    <button id="searchBtn">Search</button>
+                </div>
+            </div>
+            
+            <h2 id="section-title">Results</h2>
+            <div class="results-container" id="resultsGrid">
+                <p class="placeholder-text">Search for a song to start listening.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="player">
+        <div class="song-info">
+            <img id="player-image" src="https://via.placeholder.com/60" alt="Cover" style="display: none;">
+            <div class="song-details">
+                <div class="song-title" id="player-title">No song playing</div>
+                <div class="song-artist" id="player-artist"></div>
+            </div>
+        </div>
+        
+        <div class="player-controls">
+            <div class="control-buttons">
+                <button id="prevBtn"><i class="fas fa-step-backward"></i></button>
+                <button id="playPauseBtn" class="play-btn"><i class="fas fa-play-circle"></i></button>
+                <button id="nextBtn"><i class="fas fa-step-forward"></i></button>
+            </div>
+            <div class="progress-container">
+                <span id="currentTime">0:00</span>
+                <input type="range" id="progressBar" value="0" max="100">
+                <span id="totalTime">0:00</span>
+            </div>
+        </div>
+        
+        <div class="volume-controls">
+            <i class="fas fa-volume-up"></i>
+            <input type="range" id="volumeBar" value="100" max="100">
+        </div>
+    </div>
+
+    <div id="albumModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Add to Album</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <ul id="modalAlbumList"></ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
