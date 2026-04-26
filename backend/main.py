@@ -1,9 +1,18 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 import httpx
 import urllib.parse
 import html
 
 app = FastAPI(title="JioSaavn Unofficial API", version="1.0")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], # Allows any frontend to connect. In production, put your website URL here.
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 JIOSAAVN_BASE_URL = "https://www.jiosaavn.com/api.php"
 
