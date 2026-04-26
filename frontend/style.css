@@ -8,7 +8,7 @@
 body {
     background-color: #000;
     color: #fff;
-    height: 100vh;
+    height: 100dvh; /* Changed from 100vh */
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -294,7 +294,8 @@ body {
     justify-content: space-between;
     padding: 0 16px;
     border-top: 1px solid #282828;
-    z-index: 100;
+    z-index: 1000; /* Increased to ensure it stays on top */
+    flex-shrink: 0; /* Add this line */
 }
 
 .song-info {
@@ -576,6 +577,14 @@ input[type=range]:hover {
 
     .volume-controls {
         display: none;
+    }
+
+    .player { 
+        padding: 10px; 
+        flex-wrap: wrap; 
+        height: auto; /* Allow the player to expand if items wrap */
+        min-height: 90px;
+        padding-bottom: 20px; /* Gives breathing room above Android/iOS native navigation bars */
     }
 
     .player-controls {
