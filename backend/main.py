@@ -27,6 +27,10 @@ def clean_text(text: str) -> str:
         return ""
     return html.unescape(text)
 
+@app.get("/health")
+def health_check():
+    return {"status": "awake"}
+
 @app.get("/search")
 async def search_song(query: str):
     """Searches for songs and returns a clean list of results with IDs."""
